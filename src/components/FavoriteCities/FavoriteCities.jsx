@@ -15,6 +15,7 @@ const FavoriteCities = () => {
     const data = await ans.data;
     console.log({ data }, ans.status);
     setFavoriteCities(data);
+    setPickedCity(data[0].id);
   };
 
   // const favoriteCitiesFromServer = [

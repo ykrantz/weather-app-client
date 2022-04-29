@@ -5,7 +5,7 @@ import WeatherBody from "../../WeatherBody/WeatherBody";
 import handleWeather from "../../../context/handleWeather.js";
 
 const WeatherHome = () => {
-  const [pickedCity, setPickedCity] = useState("2643743");
+  const [pickedCity, setPickedCity] = useState("");
 
   return (
     <div>

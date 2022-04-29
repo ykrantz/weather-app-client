@@ -12,11 +12,13 @@ const CityWeather = () => {
   const { pickedCity } = useContext(handleWeather);
 
   const getCityWeatherFromServer = async (pickedCity) => {
-    const ans = await api.get(`cityweather/cityid/${pickedCity}`);
-    const data = await ans.data;
-    console.log({ data });
+    if (pickedCity) {
+      const ans = await api.get(`cityweather/cityid/${pickedCity}`);
+      const data = await ans.data;
+      console.log({ data });
 
-    setCityWeather(data);
+      setCityWeather(data);
+    }
   };
 
   useEffect(() => {
@@ -32,7 +34,7 @@ const CityWeather = () => {
     <div>
       <h1>CityWeather : {cityWeather?.city.name} </h1>
       {cityWeather?.daysWeather.map((dayWeather) => (
-        <WeatherOfDay key={dayWeather.dt} dayWeather={dayWeather} />
+        <WeatherOfDay key={dayWeather.date} dayWeather={dayWeather} />
       ))}
     </div>
   );
