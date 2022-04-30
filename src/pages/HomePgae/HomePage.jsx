@@ -1,4 +1,4 @@
-import WeatherHome from "../../components/WeatherHome/WeatherHeader/WeatherHome";
+import WeatherHome from "../../components/WeatherHome/WeatherHome";
 import "./HomePage.css";
 
 const HomePage = () => {
