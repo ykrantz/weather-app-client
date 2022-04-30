@@ -13,6 +13,7 @@ const CityWeather = () => {
 
   const getCityWeatherFromServer = async (pickedCity) => {
     if (pickedCity) {
+      console.log({ api }, "33");
       const ans = await api.get(`cityweather/cityid/${pickedCity}`);
       const data = await ans.data;
       console.log({ data });
