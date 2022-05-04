@@ -9,7 +9,10 @@ const CitiesSearchResults = () => {
   return (
     <div>
       <h5>serach results: </h5>
-      <select onChange={(e) => setPickedCity(e.target.value)}>
+      <select
+        size={searchCitiesResults.length}
+        onChange={(e) => setPickedCity(e.target.value)}
+      >
         {searchCitiesResults.map((val) => (
           <option key={val} value={val}>
             {val}

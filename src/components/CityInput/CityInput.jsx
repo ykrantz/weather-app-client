@@ -11,6 +11,7 @@ const CityInput = () => {
 
   const handleCityInputCahnge = (str) => {
     setCitySearchInput(str);
+    setSearchCitiesResults(["waiting for data from server"]);
     searchCityStringFromServerApi(str);
   };
 

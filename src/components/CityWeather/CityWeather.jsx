@@ -22,13 +22,30 @@ const CityWeather = () => {
     }
   };
 
+  const getCityWeatherByNameFromServer = async (pickedCity) => {
+    if (pickedCity) {
+      const ans = await api.get(`cityweather/cityname/${pickedCity}`);
+      const data = await ans.data;
+      console.log({ ans });
+      if (ans.status === 200) {
+        setCityWeather(data);
+      } else {
+        // TODO: when city in't found . we get uncought in promise eror. need to dislplay city wan't found
+        console.log("didn't find city details");
+        setCityWeather([]);
+      }
+    }
+  };
+
   useEffect(() => {
-    getCityWeatherFromServer(pickedCity);
+    getCityWeatherByNameFromServer(pickedCity);
+    // getCityWeatherFromServer(pickedCity);
     // allCityWeatherFromServer();
   }, []);
 
   useEffect(() => {
-    getCityWeatherFromServer(pickedCity);
+    getCityWeatherByNameFromServer(pickedCity);
+    // getCityWeatherFromServer(pickedCity);
   }, [pickedCity]);
 
   return (

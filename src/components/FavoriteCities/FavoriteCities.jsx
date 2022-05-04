@@ -7,6 +7,7 @@ import api from "../../utils/axiosReq";
 
 const FavoriteCities = () => {
   const { pickedCity, setPickedCity } = useContext(handleWeather);
+  const [pickedFavoriteCity, setPickedFavoriteCity] = useState("");
 
   const [favoriteCities, setFavoriteCities] = useState([]);
 
@@ -15,7 +16,13 @@ const FavoriteCities = () => {
     const data = await ans.data;
     console.log({ data }, ans.status);
     setFavoriteCities(data);
-    setPickedCity(data[0].id);
+    setPickedFavoriteCity(data[0].name);
+    setPickedCity(data[0].name);
+  };
+
+  const handlePickedFavoriteCity = (cityName) => {
+    setPickedCity(cityName);
+    setPickedFavoriteCity(cityName);
   };
 
   // const favoriteCitiesFromServer = [
@@ -67,11 +74,19 @@ const FavoriteCities = () => {
     <div>
       <h4>favorite city:</h4>
       <select
-        value={pickedCity}
-        onChange={(e) => setPickedCity(e.target.value)}
+        value={pickedFavoriteCity}
+        onChange={
+          (e) => {
+            handlePickedFavoriteCity(e.target.value);
+          }
+          // setPickedFavoriteCity(e.target.value)
+          // setPickedFavoriteCity("tel aviv");
+          // setPickedCity(e.target.value);
+        }
       >
         {favoriteCities.map((city) => (
-          <option key={city.id} value={city.id}>
+          <option key={city.id} value={city.name}>
+            {/* <option key={city.id} value={city.id}> */}
             <FavoriteCity city={city} />
           </option>
         ))}
