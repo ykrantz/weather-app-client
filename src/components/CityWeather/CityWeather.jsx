@@ -51,9 +51,13 @@ const CityWeather = () => {
   return (
     <div>
       <h1>CityWeather : {cityWeather?.city.name} </h1>
-      {cityWeather?.daysWeather.map((dayWeather) => (
-        <WeatherOfDay key={dayWeather.date} dayWeather={dayWeather} />
-      ))}
+      <div className="CityWeather-daysWeather">
+        <div className="row">
+          {cityWeather?.daysWeather.map((dayWeather) => (
+            <WeatherOfDay key={dayWeather.date} dayWeather={dayWeather} />
+          ))}
+        </div>
+      </div>
     </div>
   );
 };

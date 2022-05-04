@@ -10,6 +10,7 @@ const CitiesSearchResults = () => {
     <div>
       <h5>serach results: </h5>
       <select
+        className="form-select  w-75 "
         size={searchCitiesResults.length}
         onChange={(e) => setPickedCity(e.target.value)}
       >

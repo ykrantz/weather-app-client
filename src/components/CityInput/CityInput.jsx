@@ -40,13 +40,28 @@ const CityInput = () => {
   };
 
   return (
-    <div>
-      <input
+    <div className="CityInput-div me-4">
+      <nav className="navbar navbar-light bg-light">
+        {/* <form class="form-inline"> */}
+        <input
+          className="form-control mr-sm-2 w-75 me-3"
+          type="search"
+          placeholder="enter city"
+          aria-label="enter city"
+          value={citySearchInput}
+          onChange={(e) => handleCityInputCahnge(e.target.value)}
+        />
+        <button className="btn btn-outline-success my-2 my-sm-0 ">
+          Search
+        </button>
+        {/* </form> */}
+      </nav>
+      {/* <input
         type={"text"}
         placeholder="enter city"
         value={citySearchInput}
         onChange={(e) => handleCityInputCahnge(e.target.value)}
-      ></input>
+      ></input> */}
     </div>
   );
 };

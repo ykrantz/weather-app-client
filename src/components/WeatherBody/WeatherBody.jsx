@@ -10,11 +10,11 @@ const WeatherBody = () => {
   return (
     <div className="WeatherBody-container">
       <div className="WeatherBody-left">
+        <FavoriteCities />
         <CityInput />
         <CitiesSearchResults />
       </div>
       <div className="WeatherBody-right">
-        <FavoriteCities />
         <CityWeather />
       </div>
     </div>

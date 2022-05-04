@@ -1,11 +1,12 @@
-import "./FavoriteCities.css";
+import "./FavoriteCitiesBS.css";
 
 import React, { useContext, useEffect, useState } from "react";
 import FavoriteCity from "../FavoriteCity/FavoriteCity";
 import handleWeather from "../../context/handleWeather";
 import api from "../../utils/axiosReq";
+import FavoriteCityBS from "../FavoriteCityBS/FavoriteCityBS";
 
-const FavoriteCities = () => {
+const FavoriteCitiesBS = () => {
   const { pickedCity, setPickedCity } = useContext(handleWeather);
   const [pickedFavoriteCity, setPickedFavoriteCity] = useState("");
 
@@ -71,11 +72,9 @@ const FavoriteCities = () => {
   // console.log(pickedCity);
   // console.log({ favoriteCities });
   return (
-    <div className="FavoriteCities-container mt-5 mb-5">
-      <h4 className="mb-3 w-75">favorite city:</h4>
-
+    <div>
+      <h4>favorite city:</h4>
       <select
-        className="form-select  w-75 "
         value={pickedFavoriteCity}
         onChange={
           (e) => {
@@ -93,8 +92,38 @@ const FavoriteCities = () => {
           </option>
         ))}
       </select>
+
+      {/* boot strap */}
+
+      <div class="list-group">
+        {favoriteCities.map((city) => (
+          <FavoriteCityBS city={city} />
+        ))}
+        <button
+          type="button"
+          class="list-group-item list-group-item-action active"
+        >
+          Cras justo odio
+        </button>
+        <button type="button" class="list-group-item list-group-item-action">
+          Dapibus ac facilisis in
+        </button>
+        <button type="button" class="list-group-item list-group-item-action">
+          Morbi leo risus
+        </button>
+        <button type="button" class="list-group-item list-group-item-action">
+          Porta ac consectetur ac
+        </button>
+        <button
+          type="button"
+          class="list-group-item list-group-item-action"
+          disabled
+        >
+          Vestibulum at eros
+        </button>
+      </div>
     </div>
   );
 };
 
-export default FavoriteCities;
+export default FavoriteCitiesBS;

@@ -11,7 +11,7 @@ const WeatherHome = () => {
   const [searchCitiesResults, setSearchCitiesResults] = useState([]);
 
   return (
-    <div>
+    <div className="container">
       <handleWeather.Provider
         value={{
           pickedCity,
