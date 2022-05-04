@@ -4,13 +4,18 @@ import React, { useContext } from "react";
 import handleWeather from "../../context/handleWeather";
 
 const CitiesSearchResults = () => {
-  const { searchCitiesResults } = useContext(handleWeather);
+  const { searchCitiesResults, setPickedCity } = useContext(handleWeather);
 
   return (
     <div>
-      {searchCitiesResults.map((val) => (
-        <p key={val}>{val}</p>
-      ))}
+      <h5>serach results: </h5>
+      <select onChange={(e) => setPickedCity(e.target.value)}>
+        {searchCitiesResults.map((val) => (
+          <option key={val} value={val}>
+            {val}
+          </option>
+        ))}
+      </select>
     </div>
   );
 };

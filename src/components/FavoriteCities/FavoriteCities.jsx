@@ -65,6 +65,7 @@ const FavoriteCities = () => {
   // console.log({ favoriteCities });
   return (
     <div>
+      <h4>favorite city:</h4>
       <select
         value={pickedCity}
         onChange={(e) => setPickedCity(e.target.value)}

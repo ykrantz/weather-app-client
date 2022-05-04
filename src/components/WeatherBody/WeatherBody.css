@@ -1,0 +1,21 @@
+
+.WeatherBody-container{
+display: flex;
+
+}
+
+.WeatherBody-left{
+    display: flex;
+    flex-direction: column;
+
+    width: 30%;
+
+    float: left;
+}
+.WeatherBody-right{
+    display: flex;
+    flex-direction: column;
+    float: right;
+    width: 60%;
+}
+
