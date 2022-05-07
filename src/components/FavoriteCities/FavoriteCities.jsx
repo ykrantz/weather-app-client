@@ -72,7 +72,7 @@ const FavoriteCities = () => {
   // console.log({ favoriteCities });
   return (
     <div className="FavoriteCities-container mt-5 mb-5">
-      <h4 className="mb-3 w-75">favorite city:</h4>
+      <h4 className="mb-3 w-75 text-secondary">My favorite cities:</h4>
 
       <select
         className="form-select  w-75 "
@@ -81,10 +81,14 @@ const FavoriteCities = () => {
           (e) => {
             handlePickedFavoriteCity(e.target.value);
           }
+
           // setPickedFavoriteCity(e.target.value)
           // setPickedFavoriteCity("tel aviv");
           // setPickedCity(e.target.value);
         }
+        onClick={(e) => {
+          handlePickedFavoriteCity(e.target.value);
+        }}
       >
         {favoriteCities.map((city) => (
           <option key={city.id} value={city.name}>

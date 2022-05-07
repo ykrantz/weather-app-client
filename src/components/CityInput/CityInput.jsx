@@ -2,40 +2,56 @@ import "./CityInput.css";
 import React, { useContext, useState } from "react";
 import api from "../../utils/axiosReq";
 import handleWeather from "../../context/handleWeather";
-const MIN_SERACH_SRTING_TO_SEARCH = 5;
+import handleCityInputContex from "../../context/handleCityInputContex";
+const MIN_SERACH_SRTING_TO_SEARCH = 4;
 
 const CityInput = () => {
-  const [citySearchInput, setCitySearchInput] = useState("");
+  // const [citySearchInput, setCitySearchInput] = useState("");
 
-  const { setSearchCitiesResults } = useContext(handleWeather);
+  const { setSearchCitiesResults, setPickedCity } = useContext(handleWeather);
+
+  const { citySearchInput, setCitySearchInput, setSpinnerWaitingForData } =
+    useContext(handleCityInputContex);
+
+  console.log({ citySearchInput });
 
   const handleCityInputCahnge = (str) => {
     setCitySearchInput(str);
-    setSearchCitiesResults(["waiting for data from server"]);
+    // setSearchCitiesResults(["waiting for data from server"]);
+    setSearchCitiesResults([]);
     searchCityStringFromServerApi(str);
   };
 
   const searchCityStringFromServerApi = async (searchStr) => {
-    if (searchStr.length >= MIN_SERACH_SRTING_TO_SEARCH) {
-      console.log("searching from api");
-      const ans = await api.get(`city/searchcity/${searchStr}`);
+    try {
+      if (searchStr.length >= MIN_SERACH_SRTING_TO_SEARCH) {
+        setSpinnerWaitingForData(true);
+        console.log("searching from api");
+        const ans = await api.get(`city/searchcity/${searchStr}`);
 
-      const data = await ans.data;
-      console.log({ data });
-      if (ans.status === 200) {
-        if (data.length > 0) {
-          console.log("founded cities from api");
-          setSearchCitiesResults(data);
+        const data = await ans.data;
+        console.log({ data });
+        if (ans.status === 200) {
+          if (data.length > 0) {
+            console.log("founded cities from api");
+            setSearchCitiesResults(data);
+          } else {
+            setSearchCitiesResults([]);
+          }
         } else {
-          setSearchCitiesResults([]);
-        }
-      } else {
-        console.log("didn't find cities from api");
+          console.log("didn't find cities from api");
 
-        console.log(ans.status, data);
+          console.log(ans.status, data);
+        }
+        setSpinnerWaitingForData(false);
+      } else {
+        return false;
       }
-    } else {
-      return false;
+    } catch (e) {
+      console.log("Eror: ", e);
+      console.log("didn't find cities from api");
+      setSpinnerWaitingForData(false);
+      setSearchCitiesResults(["No city was found"]);
     }
   };
 
@@ -51,7 +67,10 @@ const CityInput = () => {
           value={citySearchInput}
           onChange={(e) => handleCityInputCahnge(e.target.value)}
         />
-        <button className="btn btn-outline-success my-2 my-sm-0 ">
+        <button
+          onClick={() => setPickedCity(citySearchInput)}
+          className="btn btn-outline-success my-2 my-sm-0 "
+        >
           Search
         </button>
         {/* </form> */}

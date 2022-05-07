@@ -1,9 +1,9 @@
 import "./FavoriteCitiesBS.css";
 
 import React, { useContext, useEffect, useState } from "react";
-import FavoriteCity from "../FavoriteCity/FavoriteCity";
-import handleWeather from "../../context/handleWeather";
-import api from "../../utils/axiosReq";
+import FavoriteCity from "../../FavoriteCity/FavoriteCity";
+import handleWeather from "../../../context/handleWeather";
+import api from "../../../utils/axiosReq";
 import FavoriteCityBS from "../FavoriteCityBS/FavoriteCityBS";
 
 const FavoriteCitiesBS = () => {
