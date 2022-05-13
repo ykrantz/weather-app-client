@@ -13,7 +13,7 @@ const CityInput = () => {
   const { citySearchInput, setCitySearchInput, setSpinnerWaitingForData } =
     useContext(handleCityInputContex);
 
-  console.log({ citySearchInput });
+  // console.log({ citySearchInput });
 
   const handleCityInputCahnge = (str) => {
     setCitySearchInput(str);

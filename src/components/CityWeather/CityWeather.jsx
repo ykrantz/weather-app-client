@@ -39,14 +39,12 @@ const CityWeather = () => {
       resetCityWeather();
       setSpinnerWaitingForData(true);
       if (pickedCity) {
-        console.log("^^^^");
         const ans = await api.get(`cityweather/cityname/${pickedCity}`);
-        console.log("status:", { ans });
         const data = await ans?.data;
-        console.log({ ans });
+        // console.log({ ans });
         if (ans.status === 200) {
           setCityWeather(data);
-          console.log({ data });
+          // console.log({ data });
         } else {
           console.log("didn't find city details");
           resetCityWeather(true, pickedCity);
@@ -74,10 +72,12 @@ const CityWeather = () => {
 
   return (
     <div>
-      <h1 className="CityWeather-title">
+      <h1 className="CityWeather-title mb-5">
         CityWeather:{"  "}
         {cityWeather?.city?.name ? (
-          <span className="text-success">{cityWeather?.city?.name}</span>
+          <span className="text-success">
+            {cityWeather?.city?.name + ", " + cityWeather?.city?.country}
+          </span>
         ) : (
           !spinnerWaitingForData && <span className="text-danger">No Data</span>
         )}

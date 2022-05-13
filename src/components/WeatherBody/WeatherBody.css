@@ -5,17 +5,17 @@ display: flex;
 }
 
 .WeatherBody-left{
-    display: flex;
+    /* display: flex;
     flex-direction: column;
 
     width: 30%;
 
-    float: left;
+    float: left; */
 }
 .WeatherBody-right{
-    display: flex;
+    /* display: flex;
     flex-direction: column;
     float: right;
-    width: 60%;
+    width: 60%; */
 }
 

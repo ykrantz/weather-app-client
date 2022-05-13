@@ -20,12 +20,31 @@ const WeatherOfDay = ({ dayWeather: { day, date, low, high, text, code } }) => {
   const dateFormat = mm + "/" + dd + "/" + yyyy;
 
   return (
-    <div className="card col-3 m-2">
+    <div className="card col-5 col-lg-3 m-2">
       <img
         className="card-img-top"
         src="../../images/weatherIcons/32-suuny.png"
+
         // alt="Card image cap"
       />
+
+      {/* TODO: image to exah term */}
+      {/* <object
+        data="../../images/test/undraw_a_moment_to_relax_re_v5gv.svg"
+        type="image/svg+xml"
+      ></object> */}
+      {/* <i class="wi wi-night-sleet"></i> */}
+      {/* <img
+        className="card-img-top"
+        // src="../../images/weatherIcons/32-suuny.png"
+        // src="../../images/weather-icons-master/svg/wi-cloudy.svg"
+        src="../../images/weatherIcons/wi-day-cloudy-gusts-t4-jp.JPG"
+        // width={"520px"}
+        // alt="Card image cap"
+      /> */}
+
+      {/* <svg xmlns="../../images/test/undraw_a_moment_to_relax_re_v5gv.svg"></svg> */}
+
       {/* <img
         className="card-img-top"
         src={`http://l.yimg.com/a/i/us/we/52/{${code}}.gif`}
@@ -37,8 +56,9 @@ const WeatherOfDay = ({ dayWeather: { day, date, low, high, text, code } }) => {
           <br></br> {dateFormat}
         </h5>
         <p className="card-text">
+          <p>{text}</p>
           <span className="text-info"> day: {high}</span> ||{" "}
-          <sapn className="text-secondary"> night: {low}</sapn>
+          <span className="text-secondary"> night: {low}</span>
         </p>
       </div>
     </div>

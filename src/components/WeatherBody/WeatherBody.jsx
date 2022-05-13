@@ -11,8 +11,8 @@ const WeatherBody = () => {
   const [spinnerWaitingForData, setSpinnerWaitingForData] = useState(false);
 
   return (
-    <div className="WeatherBody-container">
-      <div className="WeatherBody-left">
+    <div className="WeatherBody-container row">
+      <div className="WeatherBody-left  col-md-4 col-sm-12 ">
         <FavoriteCities />
         <handleCityInputContex.Provider
           value={{
@@ -26,7 +26,7 @@ const WeatherBody = () => {
           <CitiesSearchResults />
         </handleCityInputContex.Provider>
       </div>
-      <div className="WeatherBody-right">
+      <div className="WeatherBody-right col-md-8 col-sm-12">
         <CityWeather />
       </div>
     </div>

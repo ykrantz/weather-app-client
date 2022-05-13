@@ -6,16 +6,18 @@ import handleCityInputContex from "../../context/handleCityInputContex";
 import SniperWaitingCircle from "../SniperWaitingCircle/SniperWaitingCircle";
 
 const CitiesSearchResults = () => {
-  const { searchCitiesResults, setPickedCity } = useContext(handleWeather);
+  const { searchCitiesResults, setPickedCity, setSearchCitiesResults } =
+    useContext(handleWeather);
   const { setCitySearchInput, spinnerWaitingForData } = useContext(
     handleCityInputContex
   );
 
-  console.log("##", { searchCitiesResults });
+  // console.log("##", { searchCitiesResults });
 
   const handlePickedCityInFromSearchResults = (city) => {
     setCitySearchInput(city);
     setPickedCity(city);
+    setSearchCitiesResults([]);
   };
   return (
     <div>
