@@ -8,8 +8,14 @@ import WeatherHeader from "../WeatherHeader/WeatherHeader";
 
 const WeatherHome = () => {
   const [pickedCity, setPickedCity] = useState("");
+  const [refreshFavoriteCityList, setRefreshFavoriteCityList] = useState(false);
   const [searchCitiesResults, setSearchCitiesResults] = useState([]);
+  const [favoriteCities, setFavoriteCities] = useState([]);
+  const [pickedFavoriteCity, setPickedFavoriteCity] = useState("");
 
+  // const [pickedFavoriteCity, setPickedFavoriteCity] = useState(
+  //   pickedCityExistInFavorites ? pickedCity : ""
+  // );
   return (
     <div className="container">
       <handleWeather.Provider
@@ -18,6 +24,12 @@ const WeatherHome = () => {
           setPickedCity,
           searchCitiesResults,
           setSearchCitiesResults,
+          refreshFavoriteCityList,
+          setRefreshFavoriteCityList,
+          favoriteCities,
+          setFavoriteCities,
+          pickedFavoriteCity,
+          setPickedFavoriteCity,
         }}
       >
         <WeatherHeader />

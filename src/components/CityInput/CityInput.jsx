@@ -3,7 +3,7 @@ import React, { useContext, useState } from "react";
 import api from "../../utils/axiosReq";
 import handleWeather from "../../context/handleWeather";
 import handleCityInputContex from "../../context/handleCityInputContex";
-const MIN_SERACH_SRTING_TO_SEARCH = 4;
+const MIN_SERACH_SRTING_TO_SEARCH = 3;
 
 const CityInput = () => {
   // const [citySearchInput, setCitySearchInput] = useState("");

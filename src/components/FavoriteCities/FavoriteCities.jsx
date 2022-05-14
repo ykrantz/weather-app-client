@@ -5,19 +5,56 @@ import FavoriteCity from "../FavoriteCity/FavoriteCity";
 import handleWeather from "../../context/handleWeather";
 import api from "../../utils/axiosReq";
 
+import MAIN_USER_DETAILS from "../../utils/mainUserDetails";
+
 const FavoriteCities = () => {
-  const { pickedCity, setPickedCity } = useContext(handleWeather);
-  const [pickedFavoriteCity, setPickedFavoriteCity] = useState("");
+  const {
+    pickedCity,
+    setPickedCity,
+    refreshFavoriteCityList,
+    favoriteCities,
+    setFavoriteCities,
+  } = useContext(handleWeather);
 
-  const [favoriteCities, setFavoriteCities] = useState([]);
+  // const [favoriteCities, setFavoriteCities] = useState([]);
+  const pickedCityExistInFavorites = favoriteCities.find(
+    (city) => city.name === pickedCity
+  );
+  // console.log(
+  //   { pickedCityExistInFavorites },
+  //   { favoriteCities },
+  //   { pickedCity }
+  // );
+  const [pickedFavoriteCity, setPickedFavoriteCity] = useState(
+    pickedCityExistInFavorites ? pickedCity : ""
+  );
+  // const getAllCityWeatherFromServer = async (pickedCity) => {
+  //   const ans = await api.get(`city/allcity`);
+  //   const data = await ans.data;
+  //   console.log({ data }, ans.status);
+  //   setFavoriteCities(data);
+  //   setPickedFavoriteCity(data[0].name);
+  //   setPickedCity(data[0].name);
+  // };
 
-  const getAllCityWeatherFromServer = async (pickedCity) => {
-    const ans = await api.get(`city/allcity`);
-    const data = await ans.data;
-    console.log({ data }, ans.status);
-    setFavoriteCities(data);
-    setPickedFavoriteCity(data[0].name);
-    setPickedCity(data[0].name);
+  const getUserFavoriteCityFromServer = async () => {
+    console.log(MAIN_USER_DETAILS);
+    try {
+      const ans = await api.post(`userFavorites/favoritecities`, {
+        body: MAIN_USER_DETAILS,
+      });
+      const data = await ans.data;
+      console.log({ data }, ans.status, "user favrtie");
+      if (data?.length) {
+        setFavoriteCities(data);
+        setPickedFavoriteCity(data[0]?.name);
+        setPickedCity(data[0]?.name);
+      } else {
+        console.log("no favorite city for user");
+      }
+    } catch (e) {
+      console.log("ERORO:", e);
+    }
   };
 
   const handlePickedFavoriteCity = (cityName) => {
@@ -65,8 +102,15 @@ const FavoriteCities = () => {
   // ];
 
   useEffect(() => {
-    getAllCityWeatherFromServer();
+    // getAllCityWeatherFromServer();
+    getUserFavoriteCityFromServer();
   }, []);
+
+  useEffect(() => {
+    getUserFavoriteCityFromServer();
+    // TODO: bug after add city. coesn't stay picek
+    setPickedFavoriteCity(pickedCity);
+  }, [refreshFavoriteCityList]);
 
   // console.log(pickedCity);
   // console.log({ favoriteCities });
@@ -86,9 +130,9 @@ const FavoriteCities = () => {
           // setPickedFavoriteCity("tel aviv");
           // setPickedCity(e.target.value);
         }
-        onClick={(e) => {
-          handlePickedFavoriteCity(e.target.value);
-        }}
+        // onClick={(e) => {
+        //   handlePickedFavoriteCity(e.target.value);
+        // }}
       >
         {favoriteCities.map((city) => (
           <option key={city.id} value={city.name}>
