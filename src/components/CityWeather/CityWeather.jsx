@@ -15,10 +15,12 @@ const CityWeather = () => {
   const [spinnerWaitingForData, setSpinnerWaitingForData] = useState(false);
   const {
     pickedCity,
-    refreshFavoriteCityList,
-    setRefreshFavoriteCityList,
+    // refreshFavoriteCityList,
+    // setRefreshFavoriteCityList,
     favoriteCities,
     setPickedFavoriteCity,
+    setFavoriteCities,
+    setPickedCity,
   } = useContext(handleWeather);
 
   const resetCityWeather = (cityWasntFound = false, cityName) => {
@@ -44,14 +46,24 @@ const CityWeather = () => {
           }
         );
         const data = await ans?.data;
-        // console.log({ ans });
+        console.log({ data });
         if (ans.status === 200) {
+          console.log("666");
           // ser use state in order to refresh citylist from server
-          setPickedFavoriteCity(pickedCity);
-          setRefreshFavoriteCityList(!refreshFavoriteCityList);
+
+          // setPickedFavoriteCity(pickedCity);
+          // debugger;
+          // TODO:
+          // setRefreshFavoriteCityList(!refreshFavoriteCityList);
+          console.log(data?.favoriteCities, { data });
+          setFavoriteCities(data?.favoriteCities);
+          setPickedCity(pickedCity.toLowerCase());
+          // setPickedFavoriteCity(pickedCity.toLowerCase());
+
           console.log("city was added and list was update");
         } else {
           console.log("didn't add city");
+          // TODO: why city change npt to pisckid after add
           resetCityWeather(true, pickedCity);
         }
       } else {
@@ -117,9 +129,11 @@ const CityWeather = () => {
           data-placement="top"
           title="Add to favotires"
           type="button"
-          class="mt-2 btn btn-success h-100 rounded-1"
+          className="mt-2 btn btn-success h-100 rounded-1"
           onClick={() => {
             addCityToFavoriteInServer();
+            console.log(pickedCity.toLowerCase(), "$$$");
+            setPickedFavoriteCity(pickedCity.toLowerCase());
           }}
         >
           <svg
@@ -127,7 +141,7 @@ const CityWeather = () => {
             width="16"
             height="16"
             fill="currentColor"
-            class="bi bi-plus-circle-fill"
+            className="bi bi-plus-circle-fill"
             viewBox="0 0 16 16"
           >
             <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z" />

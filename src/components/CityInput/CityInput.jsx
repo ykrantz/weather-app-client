@@ -58,9 +58,9 @@ const CityInput = () => {
   return (
     <div className="CityInput-div me-4">
       <nav className="navbar navbar-light bg-light">
-        {/* <form class="form-inline"> */}
+        {/* <form className="form-inline"> */}
         <input
-          className="form-control mr-sm-2 w-75 me-3"
+          className="form-control mr-sm-2 w-75 me-3 "
           type="search"
           placeholder="enter city"
           aria-label="enter city"
@@ -69,7 +69,7 @@ const CityInput = () => {
         />
         <button
           onClick={() => setPickedCity(citySearchInput)}
-          className="btn btn-outline-success my-2 my-sm-0 "
+          className="btn btn-outline-success my-2 my-sm-0  "
         >
           Search
         </button>

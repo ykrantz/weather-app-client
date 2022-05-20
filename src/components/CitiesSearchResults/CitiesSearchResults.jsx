@@ -50,7 +50,7 @@ const CitiesSearchResults = () => {
         >
           {searchCitiesResults.map((val) => (
             <li
-              class="list-group-item"
+              className="list-group-item"
               key={val}
               onClick={(e) => {
                 console.log(e.target.innerHTML);

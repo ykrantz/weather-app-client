@@ -29,29 +29,27 @@ const WeatherOfDay = ({ dayWeather: { day, date, low, high, text, code } }) => {
   const dateFormat = mm + "/" + dd + "/" + yyyy;
 
   return (
-    <div className="card col-5 col-lg-3 m-2">
+    <div className=" card col-5 col-lg-3 m-2 WeatherOfDay-div-card ">
       <img
-        className="card-img-top"
+        className="card-img-top h-100 WeatherOfDay-image"
         src="../../images/weatherIcons/32-suuny.png"
 
         // alt="Card image cap"
       />
-      <img
+      {/* <img
         className="card-img-top"
         src="../../images/weatherIcons/snow_rain_mix_day_night.png"
 
         // alt="Card image cap"
-      />
-      <svg
+      /> */}
+      {/* <svg
         xmlns="http://www.w3.org/2000/svg"
         width="16"
         height="16"
         fill="currentColor"
-        class="bi bi-cloud"
+        className="bi bi-cloud"
         viewBox="0 0 16 16"
-      >
-        {/* {svgTest} */}
-      </svg>
+      ></svg> */}
 
       {/* <ReactLogo /> */}
       {/* <svg
@@ -88,14 +86,14 @@ const WeatherOfDay = ({ dayWeather: { day, date, low, high, text, code } }) => {
         alt="Card image cap"
       /> */}
       <div className="card-body">
-        <h5 className="card-title">
+        <h5 className="card-title fs-6">
           {day}
           <br></br> {dateFormat}
         </h5>
         <p className="card-text">
-          <p>{text}</p>
-          <span className="text-info"> day: {high}</span> ||{" "}
-          <span className="text-secondary"> night: {low}</span>
+          <span>{text}</span>
+          <span className="text-info fs-6"> day: {high}</span> ||{" "}
+          <span className="text-secondary fs-6"> night: {low}</span>
         </p>
       </div>
     </div>

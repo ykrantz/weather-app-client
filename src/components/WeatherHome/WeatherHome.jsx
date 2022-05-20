@@ -8,7 +8,7 @@ import WeatherHeader from "../WeatherHeader/WeatherHeader";
 
 const WeatherHome = () => {
   const [pickedCity, setPickedCity] = useState("");
-  const [refreshFavoriteCityList, setRefreshFavoriteCityList] = useState(false);
+  // const [refreshFavoriteCityList, setRefreshFavoriteCityList] = useState(false);
   const [searchCitiesResults, setSearchCitiesResults] = useState([]);
   const [favoriteCities, setFavoriteCities] = useState([]);
   const [pickedFavoriteCity, setPickedFavoriteCity] = useState("");
@@ -24,8 +24,8 @@ const WeatherHome = () => {
           setPickedCity,
           searchCitiesResults,
           setSearchCitiesResults,
-          refreshFavoriteCityList,
-          setRefreshFavoriteCityList,
+          // refreshFavoriteCityList,
+          // setRefreshFavoriteCityList,
           favoriteCities,
           setFavoriteCities,
           pickedFavoriteCity,
