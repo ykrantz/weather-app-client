@@ -6,6 +6,7 @@ import handleWeather from "../../context/handleWeather";
 import SniperWaitingCircle from "../SniperWaitingCircle/SniperWaitingCircle";
 
 import MAIN_USER_DETAILS from "../../utils/mainUserDetails";
+import UpdateFavoriteCity from "../UpdateFavoriteCity/UpdateFavoriteCity";
 const NUMBER_OF_DAYS_TO_DISPLAY = 6;
 
 const CityWeather = () => {
@@ -36,10 +37,10 @@ const CityWeather = () => {
 
   const addCityToFavoriteInServer = async () => {
     try {
-      const CityExistInFavorites = favoriteCities.find(
+      const cityExistInFavorites = favoriteCities.find(
         (city) => city.name === pickedCity
       );
-      if (!CityExistInFavorites) {
+      if (!cityExistInFavorites) {
         const ans = await api.put(
           `userFavorites/addcitytofavorite/${pickedCity}`,
           {
@@ -124,6 +125,7 @@ const CityWeather = () => {
   return (
     <div>
       <div className="input-group">
+        <UpdateFavoriteCity />
         <button
           data-toggle="tooltip"
           data-placement="top"
