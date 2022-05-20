@@ -31,7 +31,7 @@ const WeatherOfDay = ({ dayWeather: { day, date, low, high, text, code } }) => {
   return (
     <div className=" card col-5 col-lg-3 m-2 WeatherOfDay-div-card ">
       <img
-        className="card-img-top h-100 WeatherOfDay-image"
+        className="card-img-top  WeatherOfDay-image"
         src="../../images/weatherIcons/32-suuny.png"
 
         // alt="Card image cap"
