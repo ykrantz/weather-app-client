@@ -31,7 +31,7 @@ const WeatherOfDay = ({ dayWeather: { day, date, low, high, text, code } }) => {
   return (
     <div className=" card col-5 col-lg-3 m-2 WeatherOfDay-div-card ">
       <img
-        className="card-img-top h-100 WeatherOfDay-image"
+        className="card-img-top WeatherOfDay-image"
         src="../../images/weatherIcons/32-suuny.png"
 
         // alt="Card image cap"
@@ -86,14 +86,16 @@ const WeatherOfDay = ({ dayWeather: { day, date, low, high, text, code } }) => {
         alt="Card image cap"
       /> */}
       <div className="card-body">
-        <h5 className="card-title fs-6">
+        <h5 className="card-title ">
           {day}
           <br></br> {dateFormat}
         </h5>
-        <p className="card-text">
-          <span>{text}</span>
-          <span className="text-info fs-6"> day: {high}</span> ||{" "}
-          <span className="text-secondary fs-6"> night: {low}</span>
+        <p className="card-text ">
+          <span className="text-dark fs-6 ">{text}</span>
+          <br></br>
+          <span className="text-info"> day: {high}</span>
+
+          <span className="text-secondary "> night: {low}</span>
         </p>
       </div>
     </div>

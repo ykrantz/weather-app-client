@@ -6,6 +6,7 @@ import handleWeather from "../../context/handleWeather";
 import SniperWaitingCircle from "../SniperWaitingCircle/SniperWaitingCircle";
 
 import MAIN_USER_DETAILS from "../../utils/mainUserDetails";
+const NUMBER_OF_DAYS_TO_DISPLAY = 6;
 
 const CityWeather = () => {
   const [cityWeather, setCityWeather] = useState({
@@ -95,7 +96,6 @@ const CityWeather = () => {
         console.log({ ans }, "333");
         if (ans.status === 200) {
           setCityWeather(data);
-          // console.log({ data });
         } else {
           console.log("didn't find city details");
           resetCityWeather(true, pickedCity);
@@ -163,9 +163,12 @@ const CityWeather = () => {
       </div>
       <div className="CityWeather-daysWeather">
         <div className="row">
-          {cityWeather?.daysWeather.map((dayWeather) => (
-            <WeatherOfDay key={dayWeather.date} dayWeather={dayWeather} />
-          ))}
+          {/* show only limited days */}
+          {cityWeather?.daysWeather
+            .slice(0, NUMBER_OF_DAYS_TO_DISPLAY)
+            .map((dayWeather) => (
+              <WeatherOfDay key={dayWeather.date} dayWeather={dayWeather} />
+            ))}
         </div>
       </div>
       {spinnerWaitingForData && <SniperWaitingCircle />}
