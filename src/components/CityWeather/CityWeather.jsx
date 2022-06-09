@@ -14,7 +14,7 @@ const CityWeather = () => {
     city: "",
     daysWeather: [],
   });
-  const [spinnerWaitingForData, setSpinnerWaitingForData] = useState(false);
+  const [spinnerWaitingForData, setSpinnerWaitingForData] = useState(true);
   const {
     pickedCity,
     // refreshFavoriteCityList,
