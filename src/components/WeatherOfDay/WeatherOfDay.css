@@ -7,5 +7,10 @@
 }
 
 .WeatherOfDay-image{
-    /* width: 50px; */
+  width: 50px; 
+    /* margin-left: 40%; */
+   ;
+    /* text-align: center; */
+    margin: auto;
+    margin-top: 10px;
 }

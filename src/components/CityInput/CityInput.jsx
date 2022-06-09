@@ -58,7 +58,6 @@ const CityInput = () => {
   return (
     <div className="CityInput-div me-4">
       <nav className="navbar navbar-light bg-light">
-        {/* <form className="form-inline"> */}
         <input
           className="form-control mr-sm-2 w-75 me-3 "
           type="search"
@@ -73,14 +72,7 @@ const CityInput = () => {
         >
           Search
         </button>
-        {/* </form> */}
       </nav>
-      {/* <input
-        type={"text"}
-        placeholder="enter city"
-        value={citySearchInput}
-        onChange={(e) => handleCityInputCahnge(e.target.value)}
-      ></input> */}
     </div>
   );
 };

@@ -25,17 +25,11 @@ const UpdateFavoriteCity = ({ city }) => {
     });
   };
 
-  // const isAlreadyInFavorites = checkIfCityExistInFavorites(pickedCity);
-  // console.log(checkIfCityExistInFavorites(city), 66);
   const cityExistInFavorites = checkIfCityExistInFavorites(city) ? true : false;
   console.log({ cityExistInFavorites });
 
-  //   TODO: why it endless render:
   const [changeFavoriteCityPick, setChangeFavoriteCityPick] =
     useState(cityExistInFavorites);
-  //   console.log({ favoriteCityPick: changeFavoriteCityPick });
-
-  //   console.log(`bi bi-heart${changeFavoriteCityPick ? "-fill" : ""}`);
 
   const handleChangeFavorite = () => {
     if (!cityExistInFavorites) {
@@ -43,10 +37,6 @@ const UpdateFavoriteCity = ({ city }) => {
     } else {
       deleteCityFromFavoriteInServer();
     }
-    // const flagPickedFavorite = changeFavoriteCityPick;
-    // TODO:
-    // setChangeFavoriteCityPick("sss");
-    // console.log(changeFavoriteCityPick);
   };
 
   const addCityToFavoriteInServer = async () => {
@@ -90,8 +80,6 @@ const UpdateFavoriteCity = ({ city }) => {
     }
   };
 
-  // TODO: check why city doesnt delete.
-  // TODO: check why every update renders the day weather
   const deleteCityFromFavoriteInServer = async () => {
     try {
       console.log("delete city", 17);
@@ -108,20 +96,13 @@ const UpdateFavoriteCity = ({ city }) => {
         console.log({ data });
         if (ans.status === 200) {
           console.log("666");
-          // ser use state in order to refresh citylist from server
 
-          // setPickedFavoriteCity(pickedCity);
-          // debugger;
-          // TODO:
-          // setRefreshFavoriteCityList(!refreshFavoriteCityList);
           console.log(data?.favoriteCities, { data });
           setFavoriteCities(data?.favoriteCities);
-          //   setPickedCity(pickedCity.toLowerCase());
 
           console.log("city was delete and list was update");
         } else {
           console.log("didn't delete city");
-          // TODO: why city change npt to pisckid after add
           resetCityWeather(true, pickedCity);
         }
       } else {
@@ -157,13 +138,6 @@ const UpdateFavoriteCity = ({ city }) => {
           handleChangeFavorite();
         }}
       >
-        {/* <i
-          className={`bi bi-heart}`}
-          //   className={`bi bi-heart${changeFavoriteCityPick ? "-fill" : ""}`}
-          onClick={handleChangeFavorite()}
-        ></i> */}
-        {/* <i class="fas fa-camera-retro"></i> */}
-
         {cityExistInFavorites && (
           <svg
             xmlns="http://www.w3.org/2000/svg"
