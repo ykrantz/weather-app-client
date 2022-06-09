@@ -1,0 +1,6 @@
+.text{
+    background-color: blueviolet;
+}
+.btn:focus {
+    box-shadow: none;
+  }

@@ -18,15 +18,15 @@ const UpdateFavoriteCity = ({ city }) => {
   } = useContext(handleWeather);
 
   const checkIfCityExistInFavorites = (cityToCheck) => {
-    console.log(cityToCheck, 555, favoriteCities);
+    console.log(cityToCheck, 18, favoriteCities);
     return favoriteCities.find((city) => {
-      console.log(city.name, cityToCheck);
-      return city.name === cityToCheck;
+      // console.log(city.name, cityToCheck);
+      return city.name === cityToCheck.toLowerCase();
     });
   };
 
   // const isAlreadyInFavorites = checkIfCityExistInFavorites(pickedCity);
-  console.log(checkIfCityExistInFavorites(city), 66);
+  // console.log(checkIfCityExistInFavorites(city), 66);
   const cityExistInFavorites = checkIfCityExistInFavorites(city) ? true : false;
   console.log({ cityExistInFavorites });
 
@@ -94,11 +94,12 @@ const UpdateFavoriteCity = ({ city }) => {
   // TODO: check why every update renders the day weather
   const deleteCityFromFavoriteInServer = async () => {
     try {
-      const cityExistInFavorites = checkIfCityExistInFavorites();
+      console.log("delete city", 17);
+      const cityExistInFavorites = checkIfCityExistInFavorites(city);
 
       if (cityExistInFavorites) {
         const ans = await api.put(
-          `userFavorites/deldetcitytofavorite/${pickedCity}`,
+          `userFavorites/deldetcitytofavorite/${city}`,
           {
             body: { ...MAIN_USER_DETAILS },
           }
@@ -151,7 +152,7 @@ const UpdateFavoriteCity = ({ city }) => {
           cityExistInFavorites ? "Delete from favorites" : "Add to favorites"
         }
         type="button"
-        className="mt-2 btn  h-100 rounded-1"
+        className=" btn   h-100 rounded-1"
         onClick={() => {
           handleChangeFavorite();
         }}
@@ -166,10 +167,10 @@ const UpdateFavoriteCity = ({ city }) => {
         {cityExistInFavorites && (
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            fill="currentColor"
-            class="bi bi-heart-fill"
+            width="25"
+            height="25"
+            fill="blueviolet"
+            className="bi bi-heart-fill "
             viewBox="0 0 16 16"
           >
             <path
@@ -181,9 +182,9 @@ const UpdateFavoriteCity = ({ city }) => {
         {!cityExistInFavorites && (
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            fill="currentColor"
+            width="25"
+            height="25"
+            fill="blueviolet"
             class="bi bi-heart"
             viewBox="0 0 16 16"
           >

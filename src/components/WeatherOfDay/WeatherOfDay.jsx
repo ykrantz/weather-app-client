@@ -36,6 +36,8 @@ const WeatherOfDay = ({ dayWeather: { day, date, low, high, text, code } }) => {
 
         // alt="Card image cap"
       />
+      <img src="http://l.yimg.com/a/i/us/we/52/32.gif"></img>
+      <i class="wi wi-night-sleet"></i>
       {/* <img
         className="card-img-top"
         src="../../images/weatherIcons/snow_rain_mix_day_night.png"

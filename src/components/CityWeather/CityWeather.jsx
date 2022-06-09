@@ -124,7 +124,8 @@ const CityWeather = () => {
 
   return (
     <div>
-      <div className="input-group">
+      {/* <h1 className="CityWeather-title   ">City Weather:</h1> */}
+      <div className="input-group mb-5 CityWeather-title">
         <UpdateFavoriteCity city={pickedCity} />
         {/* <button
           data-toggle="tooltip"
@@ -150,8 +151,7 @@ const CityWeather = () => {
           </svg>
         </button> */}
 
-        <h1 className="CityWeather-title mb-5 ms-3">
-          City Weather:{"  "}
+        <h1 className="ms-3">
           {cityWeather?.city?.name ? (
             <span className="text-success text-capitalize">
               {cityWeather?.city?.name + ", " + cityWeather?.city?.country}
