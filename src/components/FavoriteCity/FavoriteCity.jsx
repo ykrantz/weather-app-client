@@ -1,9 +1,13 @@
 import React from "react";
+import capitilizeText from "../../utils/capitilizeText";
 
 const FavoriteCity = ({ city: { id, name, country } }) => {
+  const capitilizeName = capitilizeText(name);
+  const capitilizecountry = capitilizeText(country);
+
   return (
     <>
-      {name}, {country}
+      {capitilizeName}, {capitilizecountry}
     </>
   );
 };
