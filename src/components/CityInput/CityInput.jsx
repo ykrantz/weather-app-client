@@ -13,8 +13,6 @@ const CityInput = () => {
   const { citySearchInput, setCitySearchInput, setSpinnerWaitingForData } =
     useContext(handleCityInputContex);
 
-  // console.log({ citySearchInput });
-
   const handleCityInputCahnge = (str) => {
     setCitySearchInput(str);
     // setSearchCitiesResults(["waiting for data from server"]);
@@ -30,7 +28,7 @@ const CityInput = () => {
         const ans = await api.get(`city/searchcity/${searchStr}`);
 
         const data = await ans.data;
-        console.log({ data });
+        // console.log({ data });
         if (ans.status === 200) {
           if (data.length > 0) {
             console.log("founded cities from api");

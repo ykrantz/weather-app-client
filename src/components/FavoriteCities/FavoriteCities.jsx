@@ -18,26 +18,19 @@ const FavoriteCities = () => {
     setFavoriteCities,
   } = useContext(handleWeather);
 
-  console.log({ favoriteCities });
   const pickedCityExistInFavorites = favoriteCities.find(
     (city) => city.name === pickedCity
   );
 
-  console.log({ pickedFavoriteCity }, "3333");
-
   const getUserFavoriteCityFromServer = async () => {
-    console.log(MAIN_USER_DETAILS);
     try {
       const ans = await api.post(`userFavorites/favoritecities`, {
         body: MAIN_USER_DETAILS,
       });
       const data = await ans.data;
-      console.log({ data }, ans.status, "user favrtie");
       if (data?.length) {
         setFavoriteCities(data);
-        console.log({ favoriteCities });
 
-        console.log({ pickedFavoriteCity }, "^^^", { pickedCity });
         if (pickedCity) {
           setPickedFavoriteCity(pickedCity);
         } else {
@@ -51,7 +44,6 @@ const FavoriteCities = () => {
       console.log("ERORO:", e);
     }
   };
-  console.log({ pickedFavoriteCity }, "777", { pickedCity });
 
   const handlePickedFavoriteCity = (cityName) => {
     setPickedCity(cityName);
@@ -62,9 +54,7 @@ const FavoriteCities = () => {
     await getUserFavoriteCityFromServer();
   };
   const handleUpdatePickedFavoriteCity = () => {
-    console.log({ favoriteCities });
     if (favoriteCities.length > 0) {
-      console.log({ pickedFavoriteCity }, "^^^");
       if (pickedCity) {
         setPickedFavoriteCity(pickedCity.toLowerCase());
         // setPickedCity(pickedCity);

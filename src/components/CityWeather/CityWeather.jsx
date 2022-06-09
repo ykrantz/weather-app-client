@@ -48,24 +48,16 @@ const CityWeather = () => {
           }
         );
         const data = await ans?.data;
-        console.log({ data });
+        // console.log({ data });
         if (ans.status === 200) {
-          console.log("666");
-          // ser use state in order to refresh citylist from server
-
-          // setPickedFavoriteCity(pickedCity);
-          // debugger;
-          // TODO:
-          // setRefreshFavoriteCityList(!refreshFavoriteCityList);
           console.log(data?.favoriteCities, { data });
           setFavoriteCities(data?.favoriteCities);
           setPickedCity(pickedCity.toLowerCase());
-          // setPickedFavoriteCity(pickedCity.toLowerCase());
 
           console.log("city was added and list was update");
         } else {
           console.log("didn't add city");
-          // TODO: why city change npt to pisckid after add
+
           resetCityWeather(true, pickedCity);
         }
       } else {
@@ -76,17 +68,6 @@ const CityWeather = () => {
     }
   };
 
-  // const getCityWeatherByIdFromServer = async (pickedCity) => {
-  //   if (pickedCity) {
-  //     console.log({ api }, "33");
-  //     const ans = await api.get(`cityweather/cityid/${pickedCity}`);
-  //     const data = await ans.data;
-  //     console.log({ data });
-
-  //     setCityWeather(data);
-  //   }
-  // };
-
   const getCityWeatherByNameFromServer = async (pickedCity) => {
     try {
       resetCityWeather();
@@ -94,7 +75,6 @@ const CityWeather = () => {
       if (pickedCity) {
         const ans = await api.get(`cityweather/cityname/${pickedCity}`);
         const data = await ans?.data;
-        console.log({ ans }, "333");
         if (ans.status === 200) {
           setCityWeather(data);
         } else {
