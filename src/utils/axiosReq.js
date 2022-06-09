@@ -2,8 +2,8 @@
 import axios from "axios";
 // import env from "react-dotenv";
 
-const apiServer = "http://localhost:3020/api/";
-// const apiServer = "https://weather-app-ykrantz.herokuapp.com/api/";
+// const apiServer = "http://localhost:3020/api/";
+const apiServer = "https://weather-app-ykrantz.herokuapp.com/api/";
 
 // the server port
 // if (process.env.NODE_ENV !== "prd") {
